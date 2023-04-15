@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct LoginService {
+public struct LoginService {
     private init() { }
     
     static var shared: LoginService { LoginService() }

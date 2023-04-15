@@ -7,7 +7,7 @@
 
 import UIKit
 
-class NetworkService {
+public class NetworkService {
     private init() { }
 
     static var shared: NetworkService { NetworkService() }
