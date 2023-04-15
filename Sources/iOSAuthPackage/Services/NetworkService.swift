@@ -10,7 +10,7 @@ import UIKit
 public class NetworkService {
     private init() { }
 
-    static var shared: NetworkService { NetworkService() }
+    public static var shared: NetworkService { NetworkService() }
     
     typealias Response = (status: ResponseStatus, data: Any)
 

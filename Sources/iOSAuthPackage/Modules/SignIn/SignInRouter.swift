@@ -10,7 +10,7 @@ import UIKit
 
 public class SignInRouter: PresenterToRouterSignInProtocol {
     // MARK: Static methods
-    static func createModule() -> UINavigationController {
+    public static func createModule() -> UINavigationController {
         let viewController = SignInViewController()
         let navigationController = UINavigationController(rootViewController: viewController)
         
