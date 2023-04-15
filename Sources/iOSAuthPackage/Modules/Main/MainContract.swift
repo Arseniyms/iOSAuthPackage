@@ -10,14 +10,14 @@ import Foundation
 
 
 // MARK: View Output (Presenter -> View)
-protocol PresenterToViewMainProtocol: AnyObject {
+public protocol PresenterToViewMainProtocol: AnyObject {
     func setupSuccessAlert(isAdmin: Bool, with info: [Info])
     func setupErrorAlert(title: String, message: String)
 }
 
 
 // MARK: View Input (View -> Presenter)
-protocol ViewToPresenterMainProtocol: AnyObject {
+public protocol ViewToPresenterMainProtocol: AnyObject {
     
     var view: PresenterToViewMainProtocol? { get set }
     var interactor: PresenterToInteractorMainProtocol? { get set }
@@ -29,7 +29,7 @@ protocol ViewToPresenterMainProtocol: AnyObject {
 
 
 // MARK: Interactor Input (Presenter -> Interactor)
-protocol PresenterToInteractorMainProtocol: AnyObject {
+public protocol PresenterToInteractorMainProtocol: AnyObject {
     
     var presenter: InteractorToPresenterMainProtocol? { get set }
     
@@ -39,13 +39,13 @@ protocol PresenterToInteractorMainProtocol: AnyObject {
 
 
 // MARK: Interactor Output (Interactor -> Presenter)
-protocol InteractorToPresenterMainProtocol: AnyObject {
+public protocol InteractorToPresenterMainProtocol: AnyObject {
     func getInfoSuccess(isAdmin: Bool, _ info: [Info])
     func getInfoFailure(with error: Error)
 }
 
 
 // MARK: Router Input (Presenter -> Router)
-protocol PresenterToRouterMainProtocol: AnyObject {
+public protocol PresenterToRouterMainProtocol: AnyObject {
     func switchToSignIn(on view: PresenterToViewMainProtocol)
 }

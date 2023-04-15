@@ -10,7 +10,7 @@ import UIKit
 
 
 // MARK: View Output (Presenter -> View)
-protocol PresenterToViewSignUpProtocol: AnyObject {
+public protocol PresenterToViewSignUpProtocol: AnyObject {
     func updatePasswordValidation(isPassValid: Bool)
     func updateConfirmPasswordValidation(isConfirmPassValid: Bool)
     func updateEmailValidation(isEmailValid: Bool)
@@ -21,7 +21,7 @@ protocol PresenterToViewSignUpProtocol: AnyObject {
 
 
 // MARK: View Input (View -> Presenter)
-protocol ViewToPresenterSignUpProtocol: AnyObject {
+public protocol ViewToPresenterSignUpProtocol: AnyObject {
     
     var view: PresenterToViewSignUpProtocol? { get set }
     var interactor: PresenterToInteractorSignUpProtocol? { get set }
@@ -37,7 +37,7 @@ protocol ViewToPresenterSignUpProtocol: AnyObject {
 
 
 // MARK: Interactor Input (Presenter -> Interactor)
-protocol PresenterToInteractorSignUpProtocol: AnyObject {
+public protocol PresenterToInteractorSignUpProtocol: AnyObject {
     
     var presenter: InteractorToPresenterSignUpProtocol? { get set }
     
@@ -51,7 +51,7 @@ protocol PresenterToInteractorSignUpProtocol: AnyObject {
 
 
 // MARK: Interactor Output (Interactor -> Presenter)
-protocol InteractorToPresenterSignUpProtocol: AnyObject {
+public protocol InteractorToPresenterSignUpProtocol: AnyObject {
     func fetchValidEmail(_ bool: Bool)
     func fetchValidPasswrod(_ bool: Bool)
     func fetchValidConfirmPassword(_ bool: Bool)
@@ -62,7 +62,7 @@ protocol InteractorToPresenterSignUpProtocol: AnyObject {
 
 
 // MARK: Router Input (Presenter -> Router)
-protocol PresenterToRouterSignUpProtocol: AnyObject {
+public protocol PresenterToRouterSignUpProtocol: AnyObject {
     func goBackToSignIn(_ view: PresenterToViewSignUpProtocol)
     
     func showAlert(on view: PresenterToViewSignUpProtocol, title: String, message: String, handler: ((UIAlertAction) -> ())?)

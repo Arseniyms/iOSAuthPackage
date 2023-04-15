@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum AuthorizationError: Error {
+public enum AuthorizationError: Error {
     case emailAlreadyExist, saveError, invalidEmailOrPassword, idError, unknownError, blankField
 }
 
@@ -31,7 +31,7 @@ extension AuthorizationError: LocalizedError {
 }
 
 
-enum NetworkErrors: Error {
+public enum NetworkErrors: Error {
     case wrongBaseURL, dataError, serverError, wrongParameters
 }
 

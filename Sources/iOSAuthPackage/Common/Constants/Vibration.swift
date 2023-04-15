@@ -8,7 +8,7 @@
 import UIKit
 import AVFoundation
 
-enum Vibration {
+public enum Vibration {
     case error
     case success
     case warning

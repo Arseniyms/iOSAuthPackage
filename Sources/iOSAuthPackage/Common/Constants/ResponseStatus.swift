@@ -8,7 +8,7 @@
 import Foundation
 
 
-enum ResponseStatus: Int {
+public enum ResponseStatus: Int {
     case OK = 200
     case created = 201
     case deleted = 204

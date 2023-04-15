@@ -7,9 +7,8 @@
 
 import UIKit
 
-@available(iOS 13.0, *)
-extension UITextField {
-    func enablePasswordToggle() {
+public extension UITextField {
+     func enablePasswordToggle() {
         var button = UIButton()
         if #available(iOS 15.0, *) {
             var config = UIButton.Configuration.plain()
@@ -35,7 +34,7 @@ extension UITextField {
     }
 }
 
-extension UITextField {
+public extension UITextField {
     func setBorderStyle(autocorrectionType: UITextAutocorrectionType = .yes, autocapitalizationType: UITextAutocapitalizationType = .sentences) {
         borderStyle = .roundedRect
         layer.cornerRadius = 4.0

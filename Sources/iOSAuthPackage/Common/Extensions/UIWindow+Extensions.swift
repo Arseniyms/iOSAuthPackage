@@ -7,9 +7,8 @@
 
 import UIKit
 
-extension UIWindow {
-    
-    func switchRootViewController(_ viewController: UIViewController,
+extension UIWindow {    
+    public func switchRootViewController(_ viewController: UIViewController,
                                   animated: Bool = true,
                                   duration: TimeInterval = 0.5,
                                   options: AnimationOptions = .transitionFlipFromRight,

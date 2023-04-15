@@ -8,7 +8,7 @@
 import UIKit
 
 
-extension UIColor {
+public extension UIColor {
     static func dynamic(light: UIColor, dark: UIColor) -> UIColor {
         
         if #available(iOS 13.0, *) {
@@ -29,7 +29,7 @@ extension UIColor {
         return light
     }
     
-    public class var customBackgroundColor: UIColor {
+    class var customBackgroundColor: UIColor {
         if #available(iOS 13.0, *) {
             return .systemBackground
         } else {
@@ -37,7 +37,7 @@ extension UIColor {
         }
     }
     
-    public class var buttonColor: UIColor {
+    class var buttonColor: UIColor {
         .init(red: 86 / 255, green: 105 / 255, blue: 255 / 255, alpha: 1.0)
     }
 }

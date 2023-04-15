@@ -8,7 +8,7 @@
 import UIKit
 
 extension UIViewController: UITextFieldDelegate {
-    func getPasswordTextField() -> UITextField {
+    public func getPasswordTextField() -> UITextField {
         let textField = UITextField()
         textField.font = UIFont.systemFont(ofSize: 20, weight: .light)
         textField.setBorderStyle(autocorrectionType: .no, autocapitalizationType: .none)
@@ -25,7 +25,7 @@ extension UIViewController: UITextFieldDelegate {
         return textField
     }
     
-    func getInfoLabel(_ info: String = "") -> UILabel {
+    public func getInfoLabel(_ info: String = "") -> UILabel {
         let label = UILabel()
         label.text = info
         label.lineBreakMode = .byClipping
@@ -33,7 +33,7 @@ extension UIViewController: UITextFieldDelegate {
         return label
     }
     
-    func getInfoTextField() -> UITextField {
+    public func getInfoTextField() -> UITextField {
         let textField = UITextField()
         textField.font = UIFont.systemFont(ofSize: 20, weight: .light)
         textField.delegate = self

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SignInRouter: PresenterToRouterSignInProtocol {
+public class SignInRouter: PresenterToRouterSignInProtocol {
     // MARK: Static methods
     static func createModule() -> UINavigationController {
         let viewController = SignInViewController()
@@ -25,14 +25,14 @@ class SignInRouter: PresenterToRouterSignInProtocol {
         return navigationController
     }
     
-    func pushToSignUpController(on view: PresenterToViewSignInProtocol) {
+    public func pushToSignUpController(on view: PresenterToViewSignInProtocol) {
         let signUpViewController = SignUpRouter.createModule()
         
         let vc = view as! SignInViewController
         vc.navigationController?.pushViewController(signUpViewController, animated: true)
     }
     
-    func pushToMainController(on view: PresenterToViewSignInProtocol) {
+    public func pushToMainController(on view: PresenterToViewSignInProtocol) {
         let mainViewController = MainRouter.createModule()
 
         let vc = view as! SignInViewController
@@ -42,7 +42,7 @@ class SignInRouter: PresenterToRouterSignInProtocol {
         window.switchRootViewController(mainViewController)
     }
     
-    func showErrorAlert(on view: PresenterToViewSignInProtocol, title: String, message: String, handler: ((UIAlertAction) -> Void)?) {
+    public func showErrorAlert(on view: PresenterToViewSignInProtocol, title: String, message: String, handler: ((UIAlertAction) -> Void)?) {
         let vc = view as! SignInViewController
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)

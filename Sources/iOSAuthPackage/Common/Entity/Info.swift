@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Info: Codable {
+public struct Info: Codable {
     let id: Int
     let label: String
     let amount: Int
