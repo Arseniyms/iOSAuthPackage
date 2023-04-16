@@ -24,7 +24,7 @@ public class SignUpViewController: UIViewController {
         self.navigationController?.navigationBar.shadowImage = UIImage()
 
         setupUI()
-        additionalViewsSetup?()
+        SignUpViewController.additionalViewsSetup?()
     }
 
     @objc func exitButtonTapped(_: UIButton) {
@@ -256,7 +256,7 @@ public class SignUpViewController: UIViewController {
         signUpButton.isEnabled = isPassValid && isConfirmPassValid && isEmailValid
     }
     
-    public var additionalViewsSetup: (() -> ())?
+    public static var additionalViewsSetup: (() -> ())?
 }
 
 extension SignUpViewController: PresenterToViewSignUpProtocol {
