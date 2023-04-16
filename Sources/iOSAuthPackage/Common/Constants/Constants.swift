@@ -19,8 +19,11 @@ public struct Constants {
     static let passRegex = "^[a-zA-Z0-9$@$!%*?&#^_., +'\"`{}()|\\[\\]\\\\/=<>;:\\-~]{8,64}$"
 
     static let loginService = "tokenSaverService"
-    
-    enum NetworkURL {
-        static let baseURL = "http://localhost:808"
-    }
+}
+
+
+public enum NetworkURL {
+    static var baseURL = "http://localhost:808"
+    static var loginURL = ""
+    static var registerURL = ""
 }

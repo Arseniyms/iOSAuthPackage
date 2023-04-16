@@ -33,8 +33,10 @@ class SignUpInteractor: PresenterToInteractorSignUpProtocol {
         presenter?.fetchValidConfirmPassword(pass == confirmPass)
     }
 
-    func signUp(isAdmin: Bool, email: String, password: String) {
-        NetworkService.shared.register(isAdmin: isAdmin, username: email, password: password) { result in
+    func signUp(email: String, password: String) {
+        NetworkService.shared.register(stringURL: NetworkURL.registerURL,
+                                       username: email,
+                                       password: password) { result in
             switch result {
             case let .success(success):
                 switch success.status {

@@ -21,7 +21,7 @@ class SignInInteractor: PresenterToInteractorSignInProtocol {
     }
     
     func signIn(email: String, password: String) {
-        NetworkService.shared.signIn(username: email, password: password) { [weak self] result in
+        NetworkService.shared.signIn(stringURL: NetworkURL.loginURL, username: email, password: password) { [weak self] result in
             guard let self else {
                 self?.presenter?.signInFailure(error: NetworkErrors.serverError)
                 return

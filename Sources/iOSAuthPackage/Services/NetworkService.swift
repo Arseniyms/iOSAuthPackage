@@ -11,12 +11,12 @@ public class NetworkService {
     private init() { }
 
     public static var shared: NetworkService { NetworkService() }
-    
-    typealias Response = (status: ResponseStatus, data: Any)
+
+    public typealias Response = (status: ResponseStatus, data: Any)
 
     // MARK: POST Requests
 
-    func register(isAdmin: Bool, username: String, password: String, completion: @escaping (Result<Response, Error>) -> Void) {
+    public func register(stringURL: String, username: String, password: String, completion: @escaping (Result<Response, Error>) -> Void) {
         let parameters = [
             "username": username,
             "password": password,
@@ -24,8 +24,7 @@ public class NetworkService {
         ]
 
         do {
-            let path = isAdmin ? "/registerAdmin" : "/register"
-            let request = try prepareRequest(urlString: Constants.NetworkURL.baseURL + "0" + path, parameters: parameters, httpMethod: "POST")
+            let request = try prepareRequest(urlString: stringURL, parameters: parameters, httpMethod: "POST")
 
             requestWithResponse(request, completion: completion)
 
@@ -34,14 +33,14 @@ public class NetworkService {
         }
     }
 
-    func signIn(username: String, password: String, completion: @escaping (Result<Response, Error>) -> Void) {
+    public func signIn(stringURL: String, username: String, password: String, completion: @escaping (Result<Response, Error>) -> Void) {
         let parameters = [
             "username": username,
             "password": password,
         ]
 
         do {
-            let request = try prepareRequest(urlString: Constants.NetworkURL.baseURL + "0/login", parameters: parameters, httpMethod: "POST")
+            let request = try prepareRequest(urlString: stringURL, parameters: parameters, httpMethod: "POST")
 
             requestWithResponse(request, completion: completion)
 
@@ -50,30 +49,6 @@ public class NetworkService {
         }
     }
     
-    func getInfo(of token: String, completion: @escaping (Result<Response, Error>) -> Void) {
-        let url = URL(string: Constants.NetworkURL.baseURL + "1/test/jwt/")
-        guard let requestUrl = url else { fatalError() }
-        var request = URLRequest(url: requestUrl)
-        request.httpMethod = "GET"
-        
-        request.setValue("application/json", forHTTPHeaderField: "Accept")
-        request.setValue("Bearer \(token)", forHTTPHeaderField: "authorization")
-        
-        URLSession.shared.dataTask(with: request) { (data, response, error) in
-            if let error = error {
-                completion(.failure(error))
-                return
-            }
-            guard let response = response as? HTTPURLResponse else {
-                completion(.failure(AuthorizationError.idError))
-                return
-            }
-            if let data {
-                completion(.success((response.status, data)))
-            }
-            
-        }.resume()
-    }
 
     // MARK: Prepare functions
 

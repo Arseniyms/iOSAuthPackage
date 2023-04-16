@@ -262,10 +262,10 @@ class SignUpViewController: UIViewController {
             invalidConfirmPasswordLabel.textColor = .customBackgroundColor
         }
     }
-
+    
     @objc private func signUpButtonPressed(_: UIButton) {
         self.signingUp = true
-        presenter?.signUpTapped(isAdmin: isAdminSwitch.isOn ,email: emailTextField.text ?? "", password: passTextField.text ?? "")
+        presenter?.signUpTapped(email: emailTextField.text ?? "", password: passTextField.text ?? "")
     }
 
     func updateSignUpButton() {

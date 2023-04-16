@@ -19,7 +19,7 @@ public enum ResponseStatus: Int {
 
 extension HTTPURLResponse {
     
-    var status: ResponseStatus {
+    public var status: ResponseStatus {
         return ResponseStatus(rawValue: statusCode) ?? .serverError
     }
     

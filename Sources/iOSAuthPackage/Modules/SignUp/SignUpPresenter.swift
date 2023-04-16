@@ -9,6 +9,7 @@
 import Foundation
 
 class SignUpPresenter: ViewToPresenterSignUpProtocol {
+    
     // MARK: Properties
     weak var view: PresenterToViewSignUpProtocol?
     var interactor: PresenterToInteractorSignUpProtocol?
@@ -28,8 +29,8 @@ class SignUpPresenter: ViewToPresenterSignUpProtocol {
         interactor?.validateConfirmPassword(password, confirmPassword)
     }
     
-    func signUpTapped(isAdmin: Bool, email: String, password: String) {
-        interactor?.signUp(isAdmin: isAdmin, email: email, password: password)
+    func signUpTapped(email: String, password: String) {
+        interactor?.signUp(email: email, password: password)
     }
     
     func exit() {

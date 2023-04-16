@@ -31,7 +31,7 @@ public protocol ViewToPresenterSignUpProtocol: AnyObject {
     func passDidChange(to password: String)
     func confirmPassDidChange(to confirmPassword: String, password: String)
     
-    func signUpTapped(isAdmin: Bool, email: String, password: String)
+    func signUpTapped(email: String, password: String)
     func exit()
 }
 
@@ -45,7 +45,7 @@ public protocol PresenterToInteractorSignUpProtocol: AnyObject {
     func validatePassword(_ pass: String)
     func validateConfirmPassword(_ pass: String, _ confirmPass: String)
     
-    func signUp(isAdmin: Bool, email: String, password: String)
+    func signUp(email: String, password: String)
     
 }
 
