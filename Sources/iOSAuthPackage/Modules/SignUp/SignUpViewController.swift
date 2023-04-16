@@ -46,7 +46,7 @@ public class SignUpViewController: UIViewController {
         }
     }
 
-    private lazy var stackView: UIStackView = {
+    public lazy var stackView: UIStackView = {
         var stackView = UIStackView()
         stackView.axis = .vertical
         stackView.alignment = .fill
