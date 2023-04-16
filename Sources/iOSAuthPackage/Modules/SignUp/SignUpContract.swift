@@ -18,7 +18,7 @@ public protocol PresenterToViewSignUpProtocol: AnyObject {
     func signUpSuccess()
     func signUpFailed()
     
-    static var additionalViewsSetup: (() -> ())? { get set }
+    static var additionalViewsSetup: ((PresenterToViewSignUpProtocol) -> ())? { get set }
 }
 
 
