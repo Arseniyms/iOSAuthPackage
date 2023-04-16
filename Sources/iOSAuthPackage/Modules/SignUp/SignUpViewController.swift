@@ -24,7 +24,7 @@ public class SignUpViewController: UIViewController {
         self.navigationController?.navigationBar.shadowImage = UIImage()
 
         setupUI()
-        SignUpViewController.additionalViewsSetup?(view as! PresenterToViewSignUpProtocol)
+        SignUpViewController.additionalViewsSetup?(self)
     }
 
     @objc func exitButtonTapped(_: UIButton) {
