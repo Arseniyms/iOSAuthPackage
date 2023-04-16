@@ -8,10 +8,10 @@
 
 import UIKit
 
-class SignUpViewController: UIViewController {
+public class SignUpViewController: UIViewController {
     // MARK: - Lifecycle Methods
 
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
 
         if #available(iOS 13.0, *) {
@@ -58,14 +58,6 @@ class SignUpViewController: UIViewController {
 
         return stackView
     }()
-    
-    private lazy var switchStackView: UIStackView = {
-        var stackView = UIStackView()
-        stackView.axis = .horizontal
-        stackView.alignment = .fill
-        
-        return stackView
-    } ()
 
     private lazy var emailTextField: UITextField = {
         let textField = self.getInfoTextField()
@@ -98,13 +90,6 @@ class SignUpViewController: UIViewController {
 
         return textField
     }()
-    
-    private lazy var isAdminSwitch: UISwitch = {
-        let isAdminSwitch = UISwitch()
-        isAdminSwitch.isOn = false
-        isAdminSwitch.onTintColor = .buttonColor
-        return isAdminSwitch
-    } ()
 
     private lazy var signUpButton: UIButton = {
         let button = UIButton(type: .system)
@@ -177,8 +162,7 @@ class SignUpViewController: UIViewController {
 
         view.backgroundColor = .customBackgroundColor
 
-        switchStackView.addArrangedSubview(self.getInfoLabel("Вы админ? Только честно 🥺"))
-        switchStackView.addArrangedSubview(isAdminSwitch)
+       
         
         stackView.addArrangedSubview(self.getInfoLabel("Почта"))
         stackView.addArrangedSubview(emailTextField)
@@ -186,7 +170,6 @@ class SignUpViewController: UIViewController {
         stackView.addArrangedSubview(passTextField)
         stackView.addArrangedSubview(self.getInfoLabel("Подтвердите пароль"))
         stackView.addArrangedSubview(confirmPassTextField)
-        stackView.addArrangedSubview(switchStackView)
         stackView.addArrangedSubview(invalidPasswordLabel)
         stackView.addArrangedSubview(invalidConfirmPasswordLabel)
         
@@ -274,26 +257,26 @@ class SignUpViewController: UIViewController {
 }
 
 extension SignUpViewController: PresenterToViewSignUpProtocol {
-    func updatePasswordValidation(isPassValid: Bool) {
+    public func updatePasswordValidation(isPassValid: Bool) {
         self.isPassValid = isPassValid
         self.updateSignUpButton()
     }
 
-    func updateConfirmPasswordValidation(isConfirmPassValid: Bool) {
+    public func updateConfirmPasswordValidation(isConfirmPassValid: Bool) {
         self.isConfirmPassValid = isConfirmPassValid
         self.updateSignUpButton()
     }
 
-    func updateEmailValidation(isEmailValid: Bool) {
+    public func updateEmailValidation(isEmailValid: Bool) {
         self.isEmailValid = isEmailValid
         self.updateSignUpButton()
     }
     
-    func signUpSuccess() {
+    public func signUpSuccess() {
         self.signingUp = false
     }
     
-    func signUpFailed() {
+    public func signUpFailed() {
         self.signingUp = false
     }
 }
