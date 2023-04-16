@@ -33,10 +33,10 @@ public class SignInRouter: PresenterToRouterSignInProtocol {
         vc.navigationController?.pushViewController(signUpViewController, animated: true)
     }
     
-    public var pushToMainControllerAction: ((PresenterToViewSignInProtocol) -> Void)?
+    public static var pushToMainControllerAction: ((PresenterToViewSignInProtocol) -> Void)?
     
     public func pushToMainController(on view: PresenterToViewSignInProtocol) {
-        pushToMainControllerAction?(view)
+        SignInRouter.pushToMainControllerAction?(view)
     }
     
     public func showErrorAlert(on view: PresenterToViewSignInProtocol, title: String, message: String, handler: ((UIAlertAction) -> Void)?) {
