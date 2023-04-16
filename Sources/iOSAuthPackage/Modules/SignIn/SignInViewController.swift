@@ -8,10 +8,10 @@
 
 import UIKit
 
-class SignInViewController: ScrollableViewController {
+public class SignInViewController: ScrollableViewController {
     // MARK: - Lifecycle Methods
 
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
 
         
@@ -23,12 +23,12 @@ class SignInViewController: ScrollableViewController {
 
     }
 
-    override func viewWillAppear(_ animated: Bool) {
+    public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
     }
 
-    override func viewWillDisappear(_ animated: Bool) {
+    public override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
@@ -250,17 +250,17 @@ class SignInViewController: ScrollableViewController {
 }
 
 extension SignInViewController: PresenterToViewSignInProtocol {
-    func updatePasswordValidation(isPassValid: Bool) {
+    public func updatePasswordValidation(isPassValid: Bool) {
         self.isPassValid = isPassValid
         self.updateSignInButton()
     }
 
-    func updateEmailValidation(isEmailValid: Bool) {
+    public func updateEmailValidation(isEmailValid: Bool) {
         self.isEmailValid = isEmailValid
         self.updateSignInButton()
     }
     
-    func signInFailed() {
+    public func signInFailed() {
         self.signingIn = false
     }
 

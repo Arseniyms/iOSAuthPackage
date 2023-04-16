@@ -59,6 +59,7 @@ public protocol InteractorToPresenterSignInProtocol: AnyObject {
 // MARK: Router Input (Presenter -> Router)
 public protocol PresenterToRouterSignInProtocol: AnyObject {
     
+    var pushToMainControllerAction: ((PresenterToViewSignInProtocol) -> Void)? { get set }
     func pushToSignUpController(on view: PresenterToViewSignInProtocol)
     func pushToMainController(on view: PresenterToViewSignInProtocol)
     

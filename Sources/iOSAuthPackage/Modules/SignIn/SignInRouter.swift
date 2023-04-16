@@ -9,6 +9,7 @@
 import UIKit
 
 public class SignInRouter: PresenterToRouterSignInProtocol {
+    
     // MARK: Static methods
     public static func createModule() -> UINavigationController {
         let viewController = SignInViewController()
@@ -32,14 +33,10 @@ public class SignInRouter: PresenterToRouterSignInProtocol {
         vc.navigationController?.pushViewController(signUpViewController, animated: true)
     }
     
+    public var pushToMainControllerAction: ((PresenterToViewSignInProtocol) -> Void)?
+    
     public func pushToMainController(on view: PresenterToViewSignInProtocol) {
-        let mainViewController = MainRouter.createModule()
-
-        let vc = view as! SignInViewController
-        guard let window = vc.view.window else {
-            return
-        }
-        window.switchRootViewController(mainViewController)
+        pushToMainControllerAction?(view)
     }
     
     public func showErrorAlert(on view: PresenterToViewSignInProtocol, title: String, message: String, handler: ((UIAlertAction) -> Void)?) {
