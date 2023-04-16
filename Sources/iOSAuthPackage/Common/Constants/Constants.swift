@@ -23,7 +23,7 @@ public struct Constants {
 
 
 public enum NetworkURL {
-    static var baseURL = "http://localhost:808"
-    static var loginURL = ""
-    static var registerURL = ""
+    public static var baseURL = ""
+    public static var loginURL = ""
+    public static var registerURL = ""
 }
