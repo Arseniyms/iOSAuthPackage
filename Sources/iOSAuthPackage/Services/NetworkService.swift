@@ -49,10 +49,25 @@ public class NetworkService {
         }
     }
     
+    public func deleteUser(stringURL: String, token: String, completion: @escaping(Result<Response, Error>) -> Void) {
+        let parameters = [
+            "token": token,
+        ]
+        
+        do {
+            let request = try prepareRequest(urlString: stringURL, parameters: parameters, httpMethod: "DELETE")
+            
+            requestWithResponse(request, completion: completion)
+            
+        } catch {
+            completion(.failure(error))
+        }
+
+    }
 
     // MARK: Prepare functions
 
-    private func prepareRequest(urlString: String, parameters: [String: Any], httpMethod: String) throws -> URLRequest {
+    public func prepareRequest(urlString: String, parameters: [String: Any], httpMethod: String) throws -> URLRequest {
         guard let url = URL(string: urlString) else {
             throw (NetworkErrors.wrongBaseURL)
         }
@@ -71,7 +86,7 @@ public class NetworkService {
         return request
     }
 
-    private func requestWithResponse(_ request: URLRequest, completion: @escaping (Result<Response, Error>) -> Void) {
+    public func requestWithResponse(_ request: URLRequest, completion: @escaping (Result<Response, Error>) -> Void) {
         URLSession.shared.dataTask(with: request, completionHandler: { data, response, error in
             DispatchQueue.main.async {
                 if error != nil {
@@ -86,7 +101,9 @@ public class NetworkService {
                 
                 if let httpResponse = response as? HTTPURLResponse {
                     completion(.success((httpResponse.status, data)))
+                    return
                 }
+                completion(.failure(NetworkErrors.serverError))
             }
         }).resume()
     }
