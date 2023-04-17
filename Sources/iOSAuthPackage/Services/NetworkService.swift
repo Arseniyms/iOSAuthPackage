@@ -51,7 +51,7 @@ public class NetworkService {
     
     public func deleteUser(stringURL: String, token: String, completion: @escaping(Result<Response, Error>) -> Void) {
         let parameters = [
-            "token": token,
+            "authorization": token,
         ]
         
         do {
