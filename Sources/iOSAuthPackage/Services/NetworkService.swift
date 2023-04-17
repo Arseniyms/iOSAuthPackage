@@ -50,12 +50,9 @@ public class NetworkService {
     }
     
     public func deleteUser(stringURL: String, token: String, completion: @escaping(Result<Response, Error>) -> Void) {
-        let parameters = [
-            "authorization": token,
-        ]
-        
         do {
-            let request = try prepareRequest(urlString: stringURL, parameters: parameters, httpMethod: "DELETE")
+            var request = try prepareRequest(urlString: stringURL, parameters: nil, httpMethod: "DELETE")
+            request.setValue(token, forHTTPHeaderField: "authorization")
             
             requestWithResponse(request, completion: completion)
             
@@ -67,7 +64,7 @@ public class NetworkService {
 
     // MARK: Prepare functions
 
-    public func prepareRequest(urlString: String, parameters: [String: Any], httpMethod: String) throws -> URLRequest {
+    public func prepareRequest(urlString: String, parameters: [String: Any]?, httpMethod: String) throws -> URLRequest {
         guard let url = URL(string: urlString) else {
             throw (NetworkErrors.wrongBaseURL)
         }
@@ -76,7 +73,9 @@ public class NetworkService {
         request.httpMethod = httpMethod
 
         do {
-            request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: [.prettyPrinted, .fragmentsAllowed])
+            if let parameters {
+                request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: [.prettyPrinted, .fragmentsAllowed])
+            }
         } catch {
             throw NetworkErrors.wrongParameters
         }
